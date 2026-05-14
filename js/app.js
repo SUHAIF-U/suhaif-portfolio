@@ -85,3 +85,18 @@ window.addEventListener("scroll", () => {
   }
 
 });
+
+// =========================
+// CLOSE NAVBAR WHEN CLICK OUTSIDE
+// =========================
+
+document.addEventListener("click", (e) => {
+
+  const isMenuBtn = menuBtn.contains(e.target);
+  const isNavLinks = navLinks.contains(e.target);
+
+  if (!isMenuBtn && !isNavLinks) {
+    navLinks.classList.remove("active");
+  }
+
+});
