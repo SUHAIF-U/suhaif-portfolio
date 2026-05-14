@@ -1,308 +1,398 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Mohammed Suhaif U – Portfolio</title>
-  <style>
-    :root {
-      --bg: #0a0a0f; --surface: #12121a; --card: #1a1a26;
-      --accent: #7c6ff7; --accent2: #a78bfa; --accent3: #38bdf8;
-      --text: #e2e8f0; --muted: #94a3b8; --border: #2a2a3a;
-    }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', system-ui, sans-serif; line-height: 1.6; }
+   <meta charset="UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    nav { position: fixed; top: 0; width: 100%; z-index: 100; background: rgba(10,10,15,0.85); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 60px; }
-    .nav-logo { font-size: 1.1rem; font-weight: 700; background: linear-gradient(135deg, var(--accent), var(--accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    .nav-links { display: flex; gap: 2rem; list-style: none; }
-    .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
-    .nav-links a:hover { color: var(--text); }
+   <title>Mohammed Suhaif U | Portfolio</title>
 
-    .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 80px 2rem 2rem; position: relative; overflow: hidden; }
-    .hero::before { content: ''; position: absolute; top: -200px; left: 50%; transform: translateX(-50%); width: 800px; height: 800px; background: radial-gradient(circle, rgba(124,111,247,0.12) 0%, transparent 70%); pointer-events: none; }
-    .hero-avatar { width: 110px; height: 110px; border-radius: 50%; background: linear-gradient(135deg, var(--accent), var(--accent3)); display: flex; align-items: center; justify-content: center; font-size: 2.8rem; font-weight: 700; color: white; margin: 0 auto 1.5rem; box-shadow: 0 0 40px rgba(124,111,247,0.35); }
-    .hero h1 { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 800; margin-bottom: 0.5rem; }
-    .hero h1 span { background: linear-gradient(135deg, var(--accent2), var(--accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    .hero-tagline { font-size: 1.1rem; color: var(--muted); margin-bottom: 1rem; }
-    .hero-objective { max-width: 600px; margin: 0 auto 2rem; color: var(--muted); font-size: 0.95rem; }
-    .hero-badges { display: flex; gap: 0.6rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2rem; }
-    .badge { padding: 0.3rem 0.9rem; border-radius: 999px; font-size: 0.78rem; font-weight: 600; border: 1px solid var(--border); background: var(--card); color: var(--accent2); }
-    .hero-cta { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-    .btn { padding: 0.7rem 1.6rem; border-radius: 8px; font-size: 0.9rem; font-weight: 600; cursor: pointer; text-decoration: none; transition: all 0.2s; display: inline-flex; align-items: center; gap: 0.4rem; }
-    .btn-primary { background: linear-gradient(135deg, var(--accent), #5b52d4); color: white; border: none; box-shadow: 0 4px 20px rgba(124,111,247,0.35); }
-    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 28px rgba(124,111,247,0.5); }
-    .btn-outline { background: transparent; color: var(--text); border: 1px solid var(--border); }
-    .btn-outline:hover { border-color: var(--accent2); color: var(--accent2); }
+   <meta name="description" content="Portfolio of Mohammed Suhaif U - ML Enthusiast and Python Developer" />
 
-    section { padding: 5rem 2rem; }
-    .container { max-width: 1000px; margin: 0 auto; }
-    .section-label { text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.75rem; color: var(--accent2); font-weight: 700; margin-bottom: 0.5rem; }
-    .section-title { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 800; margin-bottom: 3rem; }
+   <link rel="preconnect" href="https://fonts.googleapis.com" />
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-    #skills { background: var(--surface); }
-    .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
-    .skill-card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 1.5rem; transition: border-color 0.2s, transform 0.2s; }
-    .skill-card:hover { border-color: var(--accent); transform: translateY(-3px); }
-    .skill-card h3 { font-size: 0.85rem; color: var(--accent2); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem; }
-    .skill-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-    .skill-tag { padding: 0.3rem 0.75rem; border-radius: 6px; font-size: 0.82rem; font-weight: 500; background: rgba(124,111,247,0.1); color: var(--text); border: 1px solid rgba(124,111,247,0.2); }
+   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet" />
 
-    .timeline { position: relative; padding-left: 1.5rem; }
-    .timeline::before { content: ''; position: absolute; left: 0; top: 8px; bottom: 0; width: 2px; background: var(--border); }
-    .timeline-item { position: relative; margin-bottom: 2.5rem; }
-    .timeline-item::before { content: ''; position: absolute; left: -1.85rem; top: 8px; width: 10px; height: 10px; border-radius: 50%; background: var(--accent); border: 2px solid var(--bg); box-shadow: 0 0 10px var(--accent); }
-    .tl-meta { font-size: 0.8rem; color: var(--accent2); margin-bottom: 0.3rem; }
-    .tl-title { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.2rem; }
-    .tl-company { color: var(--muted); font-size: 0.9rem; margin-bottom: 0.8rem; }
-    .tl-bullets { list-style: none; }
-    .tl-bullets li { color: var(--muted); font-size: 0.9rem; padding: 0.2rem 0; padding-left: 1rem; position: relative; }
-    .tl-bullets li::before { content: '→'; position: absolute; left: 0; color: var(--accent); }
-
-    #projects { background: var(--surface); }
-    .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
-    .project-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 1.8rem; transition: border-color 0.25s, transform 0.25s; display: flex; flex-direction: column; }
-    .project-card:hover { border-color: var(--accent3); transform: translateY(-4px); }
-    .project-icon { width: 44px; height: 44px; border-radius: 10px; background: linear-gradient(135deg, var(--accent), var(--accent3)); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; margin-bottom: 1rem; }
-    .project-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; }
-    .project-card p { color: var(--muted); font-size: 0.88rem; line-height: 1.6; flex: 1; margin-bottom: 1rem; }
-    .project-tech { display: flex; flex-wrap: wrap; gap: 0.4rem; }
-    .tech-pill { padding: 0.2rem 0.6rem; border-radius: 5px; font-size: 0.75rem; background: rgba(56,189,248,0.1); color: var(--accent3); border: 1px solid rgba(56,189,248,0.2); }
-
-    .edu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.2rem; }
-    .edu-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.4rem; }
-    .edu-year { font-size: 0.78rem; color: var(--accent2); margin-bottom: 0.3rem; }
-    .edu-degree { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.2rem; }
-    .edu-school { color: var(--muted); font-size: 0.85rem; }
-    .edu-score { margin-top: 0.5rem; font-size: 0.82rem; color: var(--accent2); font-weight: 600; }
-
-    #contact { text-align: center; }
-    .contact-card { max-width: 560px; margin: 0 auto; background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 2.5rem; }
-    .contact-links { display: flex; flex-direction: column; gap: 1rem; margin-top: 1.5rem; }
-    .contact-link { display: flex; align-items: center; gap: 0.8rem; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 0.85rem 1.2rem; color: var(--text); text-decoration: none; font-size: 0.9rem; transition: border-color 0.2s; }
-    .contact-link:hover { border-color: var(--accent2); }
-    .contact-link .icon { font-size: 1.2rem; width: 28px; }
-    .contact-link .label { font-size: 0.72rem; color: var(--muted); }
-    .contact-link .value { font-weight: 600; }
-
-    footer { text-align: center; padding: 2rem; border-top: 1px solid var(--border); color: var(--muted); font-size: 0.82rem; }
-
-    .fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.5s ease, transform 0.5s ease; }
-    .fade-up.visible { opacity: 1; transform: translateY(0); }
-
-    @media (max-width: 600px) {
-      nav { padding: 0 1rem; }
-      .nav-links { gap: 1rem; font-size: 0.8rem; }
-      section { padding: 3.5rem 1rem; }
-    }
-  </style>
+   <link rel="stylesheet" href="./css/style.css" />
 </head>
+
 <body>
 
-  <nav>
-    <div class="nav-logo">MS</div>
-    <ul class="nav-links">
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#education">Education</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
+   <!-- ========================= -->
+   <!-- LOADER -->
+   <!-- ========================= -->
 
-  <section class="hero">
-    <div class="container">
-      <div class="hero-avatar">MS</div>
-      <h1>Mohammed <span>Suhaif U</span></h1>
-      <p class="hero-tagline">ML Enthusiast · Python Developer · Fresh Graduate</p>
-      <p class="hero-objective">
-        Seeking to leverage my skills in Python and Machine Learning to build innovative,
-        data-driven systems while gaining real-world experience in a dynamic organization.
+   <div class="loader">
+      <div class="loader-circle"></div>
+   </div>
+
+   <!-- ========================= -->
+   <!-- NAVBAR -->
+   <!-- ========================= -->
+
+   <nav class="navbar">
+
+      <div class="logo">MS</div>
+
+      <ul class="nav-links">
+         <li><a href="#home">Home</a></li>
+         <li><a href="#skills">Skills</a></li>
+         <li><a href="#experience">Experience</a></li>
+         <li><a href="#projects">Projects</a></li>
+         <li><a href="#education">Education</a></li>
+         <li><a href="#contact">Contact</a></li>
+      </ul>
+
+      <div class="menu-btn">
+         <span></span>
+         <span></span>
+         <span></span>
+      </div>
+
+   </nav>
+
+   <!-- ========================= -->
+   <!-- HERO -->
+   <!-- ========================= -->
+
+   <section class="hero" id="home">
+
+      <div class="hero-bg"></div>
+
+      <div class="container hero-content reveal">
+
+         <div class="hero-image">
+            <!-- ADD IMAGE HERE -->
+            <img src="./assets/profile.jpg" alt="Mohammed Suhaif U" loading="lazy" />
+         </div>
+
+         <h1>
+            Mohammed
+            <span>Suhaif U</span>
+         </h1>
+
+         <p class="hero-role">
+            ML Enthusiast · Python Developer · Fresh Graduate
+         </p>
+
+         <p class="hero-description">
+            Passionate about Machine Learning, Python Development, and
+            building intelligent data-driven applications with modern UI.
+         </p>
+
+         <div class="hero-tags">
+            <span>Python</span>
+            <span>Machine Learning</span>
+            <span>Flask</span>
+            <span>Data Analysis</span>
+            <span>UI/UX</span>
+         </div>
+
+         <div class="hero-buttons">
+            <a href="#projects" class="btn primary-btn">
+               View Projects
+            </a>
+
+            <a href="#contact" class="btn secondary-btn">
+               Contact Me
+            </a>
+         </div>
+
+      </div>
+
+   </section>
+
+   <!-- ========================= -->
+   <!-- SKILLS -->
+   <!-- ========================= -->
+
+   <section class="section" id="skills">
+
+      <div class="container">
+
+         <div class="section-header reveal">
+            <p>What I Know</p>
+            <h2>Skills & Tools</h2>
+         </div>
+
+         <div class="skills-grid">
+
+            <div class="card reveal">
+               <h3>Programming</h3>
+
+               <div class="tags">
+                  <span>Python</span>
+                  <span>HTML</span>
+                  <span>CSS</span>
+                  <span>Flask</span>
+                  <span>MySQL</span>
+               </div>
+            </div>
+
+            <div class="card reveal">
+               <h3>Machine Learning</h3>
+
+               <div class="tags">
+                  <span>Pandas</span>
+                  <span>NumPy</span>
+                  <span>Scikit-learn</span>
+                  <span>Matplotlib</span>
+                  <span>Deep Learning</span>
+               </div>
+            </div>
+
+            <div class="card reveal">
+               <h3>Tools</h3>
+
+               <div class="tags">
+                  <span>Git</span>
+                  <span>GitHub</span>
+                  <span>VS Code</span>
+                  <span>Jupyter</span>
+                  <span>Figma</span>
+               </div>
+            </div>
+
+            <div class="card reveal">
+               <h3>Soft Skills</h3>
+
+               <div class="tags">
+                  <span>Problem Solving</span>
+                  <span>Quick Learning</span>
+                  <span>Team Work</span>
+                  <span>Time Management</span>
+               </div>
+            </div>
+
+         </div>
+
+      </div>
+
+   </section>
+
+   <!-- ========================= -->
+   <!-- EXPERIENCE -->
+   <!-- ========================= -->
+
+   <section class="section" id="experience">
+
+      <div class="container">
+
+         <div class="section-header reveal">
+            <p>Experience</p>
+            <h2>Internships</h2>
+         </div>
+
+         <div class="timeline">
+
+            <div class="timeline-item reveal">
+
+               <div class="timeline-dot"></div>
+
+               <div class="timeline-content">
+
+                  <span>May 2025 - August 2025</span>
+
+                  <h3>Machine Learning Intern</h3>
+
+                  <h4>VCodez-Innovative Ideas · Chennai</h4>
+
+                  <p>
+                     Worked on ML models, preprocessing datasets,
+                     feature engineering and model evaluation using
+                     Python and Scikit-learn.
+                  </p>
+
+               </div>
+
+            </div>
+
+            <div class="timeline-item reveal">
+
+               <div class="timeline-dot"></div>
+
+               <div class="timeline-content">
+
+                  <span>February 2024</span>
+
+                  <h3>UI/UX Intern</h3>
+
+                  <h4>ILife Technologies · Trichy</h4>
+
+                  <p>
+                     Designed wireframes, prototypes, and UI systems
+                     using Figma with focus on user experience.
+                  </p>
+
+               </div>
+
+            </div>
+
+         </div>
+
+      </div>
+
+   </section>
+
+   <!-- ========================= -->
+   <!-- PROJECTS -->
+   <!-- ========================= -->
+
+   <section class="section dark-section" id="projects">
+
+      <div class="container">
+
+         <div class="section-header reveal">
+            <p>Projects</p>
+            <h2>Featured Work</h2>
+         </div>
+
+         <div class="projects-grid">
+
+            <div class="project-card reveal">
+
+               <div class="project-icon">🚌</div>
+
+               <h3>Uber Rider Prediction</h3>
+
+               <p>
+                  Machine Learning web app that predicts weekly
+                  public transport riders using Flask and Python.
+               </p>
+
+               <div class="tags">
+                  <span>Python</span>
+                  <span>Flask</span>
+                  <span>ML</span>
+                  <span>Pandas</span>
+               </div>
+
+            </div>
+
+            <div class="project-card reveal">
+
+               <div class="project-icon">🚕</div>
+
+               <h3>Taxi Demand Prediction</h3>
+
+               <p>
+                  Time-series forecasting system for urban taxi demand
+                  using machine learning and feature engineering.
+               </p>
+
+               <div class="tags">
+                  <span>Time Series</span>
+                  <span>Scikit-learn</span>
+                  <span>Python</span>
+               </div>
+
+            </div>
+
+         </div>
+
+      </div>
+
+   </section>
+
+   <!-- ========================= -->
+   <!-- EDUCATION -->
+   <!-- ========================= -->
+
+   <section class="section" id="education">
+
+      <div class="container">
+
+         <div class="section-header reveal">
+            <p>Education</p>
+            <h2>Academic Background</h2>
+         </div>
+
+         <div class="education-grid">
+
+            <div class="edu-card reveal">
+               <span>2022 - 2025</span>
+               <h3>B.Sc Information Technology</h3>
+               <p>Jamal Mohamed College</p>
+               <h4>70%</h4>
+            </div>
+
+            <div class="edu-card reveal">
+               <span>2020 - 2022</span>
+               <h3>HSE Biology</h3>
+               <p>Government Higher Secondary School</p>
+               <h4>57%</h4>
+            </div>
+
+            <div class="edu-card reveal">
+               <span>2020</span>
+               <h3>SSLC</h3>
+               <p>Government Higher Secondary School</p>
+               <h4>54%</h4>
+            </div>
+
+         </div>
+
+      </div>
+
+   </section>
+
+   <!-- ========================= -->
+   <!-- CONTACT -->
+   <!-- ========================= -->
+
+   <section class="section dark-section" id="contact">
+
+      <div class="container">
+
+         <div class="section-header reveal">
+            <p>Get In Touch</p>
+            <h2>Contact Me</h2>
+         </div>
+
+         <div class="contact-card reveal">
+
+            <a href="mailto:mohammedsuhaif204@gmail.com">
+               ✉️ mohammedsuhaif204@gmail.com
+            </a>
+
+            <a href="tel:+918438928407">
+               📞 +91 84389 28407
+            </a>
+
+            <a href="https://github.com/mohammedsuhaif" target="_blank">
+               🐙 GitHub
+            </a>
+
+            <a href="https://www.linkedin.com/in/MohammedSuhaifU" target="_blank">
+               💼 LinkedIn
+            </a>
+
+            <!-- RESUME DOWNLOAD BUTTON -->
+
+            <a href="./assets/Mohammed_Suhaif_Resume.pdf" download class="btn resume-btn">
+               Download Resume
+            </a>
+
+         </div>
+
+      </div>
+
+   </section>
+
+   <!-- ========================= -->
+   <!-- FOOTER -->
+   <!-- ========================= -->
+
+   <footer>
+      <p>
+         Designed & Built with ❤️ by Mohammed Suhaif U
       </p>
-      <div class="hero-badges">
-        <span class="badge">🐍 Python</span>
-        <span class="badge">🤖 Machine Learning</span>
-        <span class="badge">🌐 Flask</span>
-        <span class="badge">📊 Data Analysis</span>
-        <span class="badge">🎨 UI/UX</span>
-      </div>
-      <div class="hero-cta">
-        <a href="#projects" class="btn btn-primary">View Projects ↓</a>
-        <a href="#contact" class="btn btn-outline">Get in Touch</a>
-      </div>
-    </div>
-  </section>
+   </footer>
 
-  <section id="skills">
-    <div class="container">
-      <p class="section-label">What I know</p>
-      <h2 class="section-title">Skills & Tools</h2>
-      <div class="skills-grid">
-        <div class="skill-card fade-up">
-          <h3>💻 Programming & Web</h3>
-          <div class="skill-tags">
-            <span class="skill-tag">Python</span><span class="skill-tag">HTML</span>
-            <span class="skill-tag">CSS</span><span class="skill-tag">Flask</span>
-            <span class="skill-tag">MySQL</span>
-          </div>
-        </div>
-        <div class="skill-card fade-up">
-          <h3>📊 Data & ML</h3>
-          <div class="skill-tags">
-            <span class="skill-tag">Pandas</span><span class="skill-tag">NumPy</span>
-            <span class="skill-tag">Scikit-learn</span><span class="skill-tag">Matplotlib</span>
-            <span class="skill-tag">Seaborn</span><span class="skill-tag">Deep Learning</span>
-          </div>
-        </div>
-        <div class="skill-card fade-up">
-          <h3>🛠️ Tools</h3>
-          <div class="skill-tags">
-            <span class="skill-tag">Git / GitHub</span><span class="skill-tag">VS Code</span>
-            <span class="skill-tag">Jupyter Notebook</span><span class="skill-tag">Figma</span>
-          </div>
-        </div>
-        <div class="skill-card fade-up">
-          <h3>🤝 Soft Skills</h3>
-          <div class="skill-tags">
-            <span class="skill-tag">Quick Learning</span><span class="skill-tag">Team Management</span>
-            <span class="skill-tag">Problem Solving</span><span class="skill-tag">Time Management</span>
-            <span class="skill-tag">Self-Motivated</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="experience">
-    <div class="container">
-      <p class="section-label">Where I've worked</p>
-      <h2 class="section-title">Internship Experience</h2>
-      <div class="timeline">
-        <div class="timeline-item fade-up">
-          <p class="tl-meta">May 2025 – August 2025</p>
-          <h3 class="tl-title">Machine Learning Intern</h3>
-          <p class="tl-company">VCodez-Innovative Ideas · Chennai, India</p>
-          <ul class="tl-bullets">
-            <li>Assisted in developing and training ML models for real-world data-driven applications.</li>
-            <li>Performed data preprocessing, feature engineering, and model evaluation tasks.</li>
-            <li>Gained hands-on experience with Python, Scikit-learn, Pandas, and basic Deep Learning concepts.</li>
-          </ul>
-        </div>
-        <div class="timeline-item fade-up">
-          <p class="tl-meta">February 2024</p>
-          <h3 class="tl-title">UI/UX Intern</h3>
-          <p class="tl-company">ILife Technologies · Trichy, India</p>
-          <ul class="tl-bullets">
-            <li>Completed a five-day internship with hands-on user research, wireframing, and prototyping.</li>
-            <li>Designed wireframes, prototypes, and high-fidelity UI designs using Figma.</li>
-            <li>Understood the importance of UX research, user testing, and feedback in improving user experience.</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="projects">
-    <div class="container">
-      <p class="section-label">What I've built</p>
-      <h2 class="section-title">Projects</h2>
-      <div class="projects-grid">
-        <div class="project-card fade-up">
-          <div class="project-icon">🚌</div>
-          <h3>Uber Rider Prediction</h3>
-          <p>A Machine Learning web app to predict the number of weekly public transport riders. Features data analysis in Jupyter Notebook, a Flask backend serving the trained model, and a clean HTML/CSS interface for input and results.</p>
-          <div class="project-tech">
-            <span class="tech-pill">Python</span><span class="tech-pill">Scikit-learn</span>
-            <span class="tech-pill">Pandas</span><span class="tech-pill">Flask</span>
-            <span class="tech-pill">HTML/CSS</span>
-          </div>
-        </div>
-        <div class="project-card fade-up">
-          <div class="project-icon">🚕</div>
-          <h3>Taxi Demand Prediction</h3>
-          <p>Built and trained time series models to forecast taxi demand across urban regions. Integrated temporal, weather, and event-based features to enhance accuracy, with feature engineering to optimize forecasting results.</p>
-          <div class="project-tech">
-            <span class="tech-pill">Python</span><span class="tech-pill">Time Series</span>
-            <span class="tech-pill">Scikit-learn</span><span class="tech-pill">Pandas</span>
-            <span class="tech-pill">Feature Eng.</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="education">
-    <div class="container">
-      <p class="section-label">Academic background</p>
-      <h2 class="section-title">Education</h2>
-      <div class="edu-grid">
-        <div class="edu-card fade-up">
-          <p class="edu-year">2022 – 2025</p>
-          <p class="edu-degree">B.Sc in Information Technology</p>
-          <p class="edu-school">Jamal Mohamed College</p>
-          <p class="edu-score">70%</p>
-        </div>
-        <div class="edu-card fade-up">
-          <p class="edu-year">2020 – 2022</p>
-          <p class="edu-degree">HSE – Biology</p>
-          <p class="edu-school">Government Higher Secondary School</p>
-          <p class="edu-score">57%</p>
-        </div>
-        <div class="edu-card fade-up">
-          <p class="edu-year">2020</p>
-          <p class="edu-degree">SSLC</p>
-          <p class="edu-school">Government Higher Secondary School</p>
-          <p class="edu-score">54%</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="contact">
-    <div class="container">
-      <p class="section-label">Let's connect</p>
-      <h2 class="section-title">Get In Touch</h2>
-      <div class="contact-card fade-up">
-        <p style="color:var(--muted); font-size:0.9rem;">
-          I'm currently open to internship and full-time opportunities in ML and Python development. Feel free to reach out!
-        </p>
-        <div class="contact-links">
-          <a href="mailto:mohammedsuhaif204@gmail.com" class="contact-link">
-            <span class="icon">✉️</span>
-            <div><div class="label">Email</div><div class="value">mohammedsuhaif204@gmail.com</div></div>
-          </a>
-          <a href="tel:+918438928407" class="contact-link">
-            <span class="icon">📞</span>
-            <div><div class="label">Phone</div><div class="value">+91 84389 28407</div></div>
-          </a>
-          <a href="https://www.linkedin.com/in/MohammedSuhaifU" target="_blank" class="contact-link">
-            <span class="icon">💼</span>
-            <div><div class="label">LinkedIn</div><div class="value">MohammedSuhaifU</div></div>
-          </a>
-          <a href="https://github.com/mohammedsuhaif" target="_blank" class="contact-link">
-            <span class="icon">🐙</span>
-            <div><div class="label">GitHub</div><div class="value">mohammedsuhaif</div></div>
-          </a>
-          <div class="contact-link" style="cursor:default;">
-            <span class="icon">📍</span>
-            <div><div class="label">Location</div><div class="value">Tiruvannamalai, Tamil Nadu</div></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <p>Designed & built with ❤️ · Mohammed Suhaif U · 2025</p>
-  </footer>
-
-  <script>
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-  </script>
+   <script src="./js/app.js"></script>
 
 </body>
-      </html>
+
+</html>
